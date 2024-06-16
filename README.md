@@ -1,4 +1,4 @@
-## runo
+## Runo
 
 **Site permettant la gestion de sorties de courses à pied**
 
