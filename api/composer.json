@@ -1,0 +1,23 @@
+{
+    "name": "runo/api",
+    "description": "Site permettant la gestion de sorties de courses à pied",
+    "autoload": {
+        "psr-4": {
+            "Runo\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "pikloo",
+            "email": "p.loukakou@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require-dev": {
+        "symfony/var-dumper": "7.2.x-dev"
+    },
+    "require": {
+        "altorouter/altorouter": "dev-master",
+        "vlucas/phpdotenv": "^5.6@dev"
+    }
+}

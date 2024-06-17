@@ -29,3 +29,5 @@ Une API doit être mise à disposition. Cette API ne doit pas être sécurisée.
 * lister toutes les sorties
 * lister les sorties d'un utilisateur
 * récupérer le détail d'une sortie
+
+Pour démarrer l'API :  php -S localhost:8000 -t public

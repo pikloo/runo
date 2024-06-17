@@ -3,7 +3,15 @@ BEGIN;
 DROP TABLE IF EXISTS `runo_user`,
 `runo_race`,
 `runo_comment`,
-`runo_race_type`,
+`runo_role`,
+`runo_race_type`;
+
+CREATE TABLE IF NOT EXISTS `runo_role` (
+    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `title` VARCHAR(64) NOT NULL,
+    `created_at` TIMESTAMP NOT NULL DEFAULT now(),
+    `updated_at` TIMESTAMP NOT NULL DEFAULT now()
+);
 
 CREATE TABLE IF NOT EXISTS `runo_user` (
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -12,7 +20,9 @@ CREATE TABLE IF NOT EXISTS `runo_user` (
     `email` VARCHAR(128) NOT NULL UNIQUE KEY,
     `password` VARCHAR(128) NOT NULL,
     `created_at` TIMESTAMP NOT NULL DEFAULT now(),
-    `updated_at` TIMESTAMP NOT NULL DEFAULT now()
+    `updated_at` TIMESTAMP NOT NULL DEFAULT now(),
+    `role_id` INT UNSIGNED NOT NULL,
+    FOREIGN KEY (`role_id`) REFERENCES `runo_role`(`id`)
 );
 
 CREATE TABLE IF NOT EXISTS `runo_race_type` (
@@ -43,6 +53,27 @@ CREATE TABLE IF NOT EXISTS `runo_comment` (
     FOREIGN KEY (`race_id`) REFERENCES `runo_race` (`id`) ON DELETE CASCADE
 );
 
+INSERT INTO
+    `runo_role` (`id`, `title`)
+VALUES
+    (NULL, 'ROLE_ADMIN'),
+    (NULL, 'ROLE_USER');
 
+INSERT INTO
+    `runo_user` (
+        `firstname`,
+        `lastname`,
+        `email`,
+        `password`,
+        `role_id`
+    )
+VALUES
+    (
+        'pik',
+        'loo',
+        'p.loukakou@gmail',
+        '$2y$10$.CUX6PmatPPlkmcXxZlht.5MoLM1hOgCKw1NMfxbxVeLFT3wbmkwS',
+        '1'
+    );
 
 COMMIT;
